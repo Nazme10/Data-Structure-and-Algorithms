@@ -1,0 +1,116 @@
+
+
+
+## 1. What is a Data Structure?
+
+A **Data Structure** is a method of organizing, managing, and storing data so it can be accessed and modified efficiently.
+
+### Examples:
+- Arrays
+- Lists
+- Stacks
+- Queues
+- Dictionaries (Hash Maps)
+- Trees
+- Graphs
+
+---
+
+## 2. What is an Algorithm?
+
+An **Algorithm** is a step-by-step procedure or set of rules used to solve a specific problem or perform a computation.
+
+### Characteristics:
+- **Input**: Receives input values
+- **Output**: Produces output
+- **Finite**: Ends after a certain number of steps
+- **Effective**: All operations are basic enough to be performed
+
+---
+
+## 3. What is an Array?
+
+An **array** is a data structure that stores elements in **contiguous memory locations** and allows **random access** using an index.
+
+- All elements are of the **same data type**
+- In Python, arrays are handled via:
+  - `list` (dynamic array)
+  - `array.array` (typed static array)
+
+---
+
+## 4. Static Arrays
+
+A **static array** has a fixed size. Once you define the number of elements it will hold, you cannot change that size.
+
+### Characteristics:
+- Allocated at the time of declaration
+- Faster than dynamic arrays (no resizing)
+- Less memory overhead
+- Not flexible
+
+### In Python:
+
+Python doesn’t have native fixed-size arrays like C/C++, but you can simulate them using:
+- `array.array` from the `array` module (fixed type, but still dynamic in size)
+- `numpy.array` from the `numpy` library
+- Custom implementation
+
+---
+
+## 5. Dynamic Arrays
+
+A **dynamic array** can change its size at runtime, growing or shrinking as needed.
+
+### Characteristics:
+- Resizeable
+- Slower insertions when resizing occurs
+- Extra memory is allocated to minimize frequent resizing
+
+### In Python:
+
+The built-in `list` is a dynamic array.
+
+```python
+my_list = [1, 2, 3]  # Create a dynamic list
+my_list.append(4)    # List grows in size
+````
+
+---
+
+## 6. Why is Python List Dynamic?
+
+Python’s `list` is implemented as a dynamic array under the hood using C. Here's why it's dynamic:
+
+* Internally, Python allocates more memory than needed (over-allocation).
+* When you append new elements, it uses that extra space.
+* When the list exceeds its capacity, a **new larger array is created**, and all elements are copied over.
+
+This is why `list.append()` is **amortized O(1)**.
+
+---
+
+## How Static and Dynamic Arrays Work & Which One is Better
+
+### Static Arrays
+- Fixed size defined at compile time or creation.
+- Memory is allocated contiguously once and does not change.
+- Fast element access (O(1) time).
+- No overhead of resizing during runtime.
+- Can waste memory if size is overestimated or cause errors if underestimated.
+- Typically faster at runtime due to no resizing.
+- Size cannot be changed during execution.
+
+### Dynamic Arrays
+- Size can change during runtime.
+- Start with initial capacity; resize (usually double) when full.
+- Resizing involves allocating new memory and copying elements (O(n) time).
+- Most insertions are amortized O(1) because resizing is infrequent.
+- More flexible and easier to use when size is unknown or varies.
+- Slight overhead during resizing but efficient overall.
+
+### Which One is Better?
+- **Static arrays** are better for fixed-size data with performance-critical needs and lower memory overhead.
+- **Dynamic arrays** are better when flexibility is needed and the number of elements can vary.
+- In compiled languages, static arrays are allocated at compile time; dynamic arrays allocate memory at runtime.
+- In Python, `list` (dynamic array) is preferred due to flexibility despite resizing overhead.
